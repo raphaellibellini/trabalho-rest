@@ -19,6 +19,14 @@ public class Ensino {
 	
 	@OneToMany(mappedBy = "ensino")
 	private List<Turma> turmas;
+	
+	public Ensino() {
+	}
+
+	public Ensino(Long id, String nome) {
+		this.id = id;
+		this.nome = nome;
+	}
 
 	public Long getId() {
 		return id;
