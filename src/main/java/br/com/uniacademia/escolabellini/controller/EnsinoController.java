@@ -56,12 +56,12 @@ public class EnsinoController {
 	
 	@PutMapping("/{id}")
 	@Transactional
-	public ResponseEntity<?> atualizar(@PathVariable Long id, @RequestBody AtualizacaoEnsinoForm form){		
+	public ResponseEntity<EnsinoDto> atualizar(@PathVariable Long id, @RequestBody AtualizacaoEnsinoForm form){		
 		
 		Optional<Ensino> optional = ensinoRepo.findById(id);
 		if(optional.isPresent()) {	
 			Ensino ensino = form.atualizar(id, ensinoRepo);	
-			return ResponseEntity.ok(ensino);
+			return ResponseEntity.ok(new EnsinoDto(ensino));
 		}
 		return ResponseEntity.notFound().build();
 	}
