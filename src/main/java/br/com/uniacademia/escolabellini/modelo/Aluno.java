@@ -25,8 +25,8 @@ public class Aluno {
 	public Aluno() {
 	}
 
-	public Aluno(String nome, int anoNascimento, Turma turma) {
-		super();
+	public Aluno(Long matricula, String nome, int anoNascimento, Turma turma) {
+		this.matricula = matricula;
 		this.nome = nome;
 		this.anoNascimento = anoNascimento;
 		this.turma = turma;

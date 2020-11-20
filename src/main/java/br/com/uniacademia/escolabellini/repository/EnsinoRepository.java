@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import br.com.uniacademia.escolabellini.modelo.Ensino;
 
 public interface EnsinoRepository extends JpaRepository<Ensino, Long> {
-
+	Ensino findByNome(String nomeEnsino);
 }

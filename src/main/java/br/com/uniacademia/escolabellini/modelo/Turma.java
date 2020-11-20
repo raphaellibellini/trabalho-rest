@@ -31,8 +31,8 @@ public class Turma {
 	public Turma() {
 	}
 
-	public Turma(String nome, Ensino ensino, int ano, List<Aluno> listaAlunos) {
-		super();
+	public Turma(Long id, String nome, Ensino ensino, int ano, List<Aluno> listaAlunos) {
+		this.id = id;
 		this.nome = nome;
 		this.ensino = ensino;
 		this.ano = ano;

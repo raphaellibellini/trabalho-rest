@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import br.com.uniacademia.escolabellini.controller.dto.EnsinoDto;
 import br.com.uniacademia.escolabellini.controller.form.AtualizacaoEnsinoForm;
 import br.com.uniacademia.escolabellini.modelo.Ensino;
 import br.com.uniacademia.escolabellini.repository.EnsinoRepository;
@@ -39,15 +40,16 @@ public class EnsinoController {
 	}
 	
 	@GetMapping
-	public List<Ensino> listarTodos(){
-		return ensinoRepo.findAll();
+	public List<EnsinoDto> listarTodos(){
+		
+		return EnsinoDto.converter(ensinoRepo.findAll());
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Ensino> listarPorId(@PathVariable Long id){
+	public ResponseEntity<EnsinoDto> listarPorId(@PathVariable Long id){
 		Optional<Ensino> ensino = ensinoRepo.findById(id);
 		if(ensino.isPresent()) {
-			return ResponseEntity.ok(ensino.get());
+			return ResponseEntity.ok(new EnsinoDto(ensino.get()));
 		}
 		return ResponseEntity.notFound().build();
 	}
